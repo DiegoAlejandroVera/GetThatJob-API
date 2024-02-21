@@ -59,6 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_20_202222) do
     t.bigint "user_id", null: false
     t.bigint "job_id", null: false
     t.boolean "is_following", default: false
+    t.boolean "applied", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["job_id"], name: "index_user_jobs_on_job_id"

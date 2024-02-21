@@ -1,24 +1,45 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Set up devise-jwt
 
-Things you may want to cover:
+devise-jwt will handle token dispatch and authentication, which doesn’t come with devise out of the box.
 
-* Ruby version
+JWTs need to be created with a secret key that is private. It shouldn’t be revealed to the public. When we receive a JWT from the client, we can verify it with that secret key stored on the server.
 
-* System dependencies
+We can generate a secret by typing the following in the terminal:
 
-* Configuration
+    $ bundle exec rails secret
 
-* Database creation
+We will then add it to the encrypted credentials file so it won’t be exposed:
 
-* Database initialization
+# VSCode
 
-* How to run the test suite
+    $ EDITOR='code --wait' rails credentials:edit
 
-* Services (job queues, cache servers, search engines, etc.)
+Then we add a new key: value in the encrypted .yml file.
 
-* Deployment instructions
+    #Other secrets...
 
-* ...
+    #Used as the base secret for Devise-JWT
+
+    $ devise_jwt_secret_key: (copy and paste the generated secret here)
+
+TODO:
+
+- Ruby version
+
+- System dependencies
+
+- Configuration
+
+- Database creation
+
+- Database initialization
+
+- How to run the test suite
+
+- Services (job queues, cache servers, search engines, etc.)
+
+- Deployment instructions
+
+- ...

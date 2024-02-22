@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  # Route for users index
+  get 'users/index', to: 'users#index', as: :index
 end

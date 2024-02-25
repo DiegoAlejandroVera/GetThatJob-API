@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_20_202222) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_25_051431) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_20_202222) do
     t.json "salary_range"
   end
 
+  create_table "user_connections", force: :cascade do |t|
+    t.bigint "follower_id"
+    t.bigint "following_id"
+    t.boolean "is_following", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id", "following_id"], name: "index_user_connections_on_follower_id_and_following_id", unique: true
+  end
+
   create_table "user_jobs", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "job_id", null: false
@@ -95,6 +104,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_20_202222) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "user_connections", "users", column: "follower_id"
+  add_foreign_key "user_connections", "users", column: "following_id"
   add_foreign_key "user_jobs", "jobs"
   add_foreign_key "user_jobs", "users"
 end

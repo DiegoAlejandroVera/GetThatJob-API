@@ -74,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_20_202222) do
     t.string "professional_title"
     t.text "professional_experience"
     t.text "education"
+    t.string "company_name"
     t.string "company_website"
     t.text "about"
     t.integer "user_type", default: 0

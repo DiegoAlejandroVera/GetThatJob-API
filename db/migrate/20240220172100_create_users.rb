@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :professional_title
       t.text :professional_experience
       t.text :education
+      t.string :company_name
       t.string :company_website
       t.text :about
       t.integer :user_type, default: 0
